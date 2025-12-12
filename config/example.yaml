@@ -1,0 +1,30 @@
+# Example configuration for the 1‑D heat equation solver
+
+domain:
+  L: 1.0          # Length of the spatial domain
+  Nx: 101         # Number of grid points (including boundaries)
+
+time:
+  T: 0.1          # Total simulation time
+  dt: 0.0005      # Time step (must satisfy CFL for FTCS)
+
+physics:
+  alpha: 0.01     # Diffusion coefficient
+
+boundary:
+  type: Dirichlet # "Dirichlet" or "Neumann"
+  value: 0.0      # Boundary value for Dirichlet (ignored for Neumann)
+
+initial:
+  type: sine      # "gaussian", "sine", or "constant"
+  # optional parameters for Gaussian:
+  # amplitude: 1.0
+  # centre: 0.5
+  # sigma: 0.1
+
+method: ftcs       # Choose "ftcs" or "crank-nicolson"
+
+output:
+  format: csv       # "csv" or "npz"
+  directory: results
+  save_full: false  # Store full time evolution if true
